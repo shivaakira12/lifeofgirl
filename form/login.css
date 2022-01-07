@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,900;1,300;1,400;1,900&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	align-items: center;
+	text-transform: uppercase;
+	list-style: none;
+    outline: none;
+}
+.input-style {
+    border: 1px #d1d1d1 solid;
+    color: #BCE0FD;
+    padding: 10px;
+    margin: 5px;
+}
+.wallet{
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    color: #ffffff;
+}
+.bottom-container {
+    display: flex;
+    padding-top: 30px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.navbar{
+    height: 15vh;
+    background-color: #2699FB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    color: #ffffff;
+    text-align: left;
+    font-size: 20px;
+}
+.signin{
+    color: #ffffff;
+    margin-right: 5px;
+    font-size: 15PX;
+}
+.signup {
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px #ffffff solid;
+    font-size: 15px;
+    padding: 5px;
+}
+.signup-card {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 374px;
+    height: 400px;
+}
+
+.signup-button {
+    background-color: #2699FB;
+    color: #ffffff;
+    border-radius: 3px;
+    width: 104px;
+    height: 46px;
+    padding: 6px;
+    border-width: 0px;
+}
+.signup-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.signup-heading {
+    color: #2699FB;
+    font-size: 29px;
+}
+.signin-card {
+    width: 374px;
+    height: 380px;
+    border: 1px #00000069 solid;
+    box-shadow: 0px 3px 10px #00000069;
+    border-radius: 13px;
+}

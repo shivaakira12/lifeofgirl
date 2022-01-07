@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-container">
+        <nav class="navbar">
+            <h1 class="logo">TEAM NAME</h1>
+            <div>
+                <a href="2/index.html"class="wallet" onclick="wallet()">wallet</a>
+                <a href="#" class="signin" onclick="signUp()">SIGN UP</a>
+                <button class="signup" onclick="signIn()">SIGN IN</button>
+            </div>
+        </nav>
+        <div class="bottom-container">
+            <form action="" method="POST" class="form">
+                <div class="signup-card d-none" id="signinCard">
+                    <h1 class="signup-heading">SIGNIN FORM</h1>
+                    <div id="myForm">
+                        <div class="name-container">
+                            <input type="text" class="input-style" id="name" />
+                            <p id="nameErrMsg" class="error-message"></p>
+                        </div>
+                        <div class="password-container">
+                            <input type="password" class="input-style" id="password" placeholder="PASSWORD" />
+                            <p id="passwordErrMsg" class="error-message"></p>
+                        </div>
+                        <div class="signup-button-container">
+                            <button class="signup-button">SIGN IN</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="signup-card d-none" id="signupCard">
+                    <h1 class="signup-heading">SIGNUP FORM</h1>
+                    <div id="myForm">
+                        <div class="name-container">
+                            <input type="text" class="input-style" id="name" placeholder="FULL NAME" />
+                            <p id="nameErrMsg" class="error-message"></p>
+                        </div>
+                        <div class="email-container">
+                            <input type="text" class="input-style" id="email" placeholder="EMAIL" />
+                            <p id="emailErrMsg" class="error-message"></p>
+                        </div>
+                        <div class="password-container">
+                            <input type="password" class="input-style" id="password" placeholder="PASSWORD" />
+                            <p id="passwordErrMsg" class="error-message"></p>
+                        </div>
+                        <div class="password-container">
+                            <input type="password" class="input-style" id="password" placeholder="CONFIRM PASSWORD" />
+                            <p id="passwordErrMsg" class="error-message"></p>
+                        </div>
+                        <div class="signup-button-container">
+                            <button class="signup-button">SIGN UP</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    <script>
+        let signupCardEl = document.getElementById("signupCard")
+        let signinCardEl = document.getElementById("signinCard")
+        function signIn() {
+            signupCardEl.classList.add("d-none")
+            signinCardEl.classList.remove("d-none")
+        }
+        function signUp() {
+            signupCardEl.classList.remove("d-none")
+            signinCardEl.classList.add("d-none")
+        }
+        function wallet() {
+            signupCardEl.classList.remove("d-none")
+            signinCardEl.classList.add("d-none")
+        }
+        const url="https://logathon-signup.herokuapp.com/web/signup"
+        const formy=document.querySelector('form');
+        formy.addEventListener('click',async(e)=>{
+            e.preventDefault();
+            const formData=new FormData(formy);
+            const formDataSerialized=Object.fromEntries(formData);
+            const jsonObject={
+                ...formDataSerialized,
+                sendToSelf:formDataSerialized.sendTpSelf ? true : false,
+            };
+            try{
+                const response=await fetch(url,{
+                    method:"POST",
+                    body:JSON.stringify(jsonObject),
+                    headers:{
+                        "Content-Type":"application/json",
+                    },
+                });
+                const json=await response.json();
+                console.log(json);
+            }catch(e){
+                console.error(e);
+                alert("there as an error")
+            }
+        });
+    </script>
+</body>
+
+</html>
